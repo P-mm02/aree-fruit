@@ -1,0 +1,58 @@
+.contactBox {
+  padding: 22px;
+  border-radius: var(--r-lg);
+  border: 1px solid rgba(14, 140, 92, 0.18);
+  background:
+    radial-gradient(700px 420px at 18% 18%, rgba(14, 140, 92, 0.12), rgba(14, 140, 92, 0)),
+    radial-gradient(700px 420px at 80% 55%, rgba(217, 141, 44, 0.12), rgba(217, 141, 44, 0)),
+    rgba(255,255,255,0.56);
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 18px;
+  overflow: hidden;
+}
+
+.contactActions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+.contactHint { margin-top: 12px; color: var(--muted); font-size: 0.92rem; }
+.contactHint code { color: rgba(11, 16, 12, 0.90); }
+
+.contactRight {
+  position: relative;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.42);
+  overflow: hidden;
+}
+
+.contactOrb {
+  position: absolute;
+  inset: -24%;
+  background:
+    radial-gradient(300px 240px at 30% 30%, rgba(14, 140, 92, 0.16), rgba(14, 140, 92, 0)),
+    radial-gradient(300px 240px at 70% 70%, rgba(217, 141, 44, 0.12), rgba(217, 141, 44, 0));
+  filter: blur(12px);
+}
+
+.contactMini {
+  position: relative;
+  margin: 16px;
+  padding: 16px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border-soft);
+  background: var(--glass);
+  backdrop-filter: var(--backdrop);
+}
+
+.contactMiniTitle { font-weight: 900; margin-bottom: 10px; color: var(--text); }
+
+.contactList {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  display: grid;
+  gap: 6px;
+}
+
+@media (max-width: 1100px) {
+  .contactBox { grid-template-columns: 1fr; }
+}

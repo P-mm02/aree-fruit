@@ -1,66 +1,52 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import styles from './page.module.css'
 
-export default function Home() {
+import SiteHeader from './components/SiteHeader/SiteHeader'
+import HeroTH from './components/HeroTH/HeroTH'
+import AboutOrchardTH from './components/AboutOrchardTH/AboutOrchardTH'
+import SeasonalShowcaseTH from './components/SeasonalShowcaseTH/SeasonalShowcaseTH'
+import WhyChooseTH from './components/WhyChooseTH/WhyChooseTH'
+import HowToOrderTH from './components/HowToOrderTH/HowToOrderTH'
+import ReviewsTH from './components/ReviewsTH/ReviewsTH'
+import FAQTH from './components/FAQTH/FAQTH'
+import ContactTH from './components/ContactTH/ContactTH'
+import SiteFooterTH from './components/SiteFooterTH/SiteFooterTH'
+
+export default function HomePage() {
+  // Basic JSON-LD (safe placeholders). Replace with real info when ready.
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: "สวนแม่อารี (Aree's Fruit)",
+    description:
+      'สวนผลไม้ตามฤดูกาล คัดเกรด ส่งตรงจากสวน แพ็กอย่างดี พร้อมจัดส่ง',
+    areaServed: 'TH',
+    sameAs: [
+      'https://example.com', // TODO: replace with LINE/FB/IG links
+    ],
+  }
+
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+      <SiteHeader />
+
+      <main id="main" className={styles.main}>
+        <HeroTH />
+        <AboutOrchardTH />
+        <SeasonalShowcaseTH />
+        <WhyChooseTH />
+        <HowToOrderTH />
+        <ReviewsTH />
+        <FAQTH />
+        <ContactTH />
       </main>
+
+      <SiteFooterTH />
+
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </div>
-  );
+  )
 }

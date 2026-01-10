@@ -1,0 +1,31 @@
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.featureCard {
+  padding: 18px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--card);
+  backdrop-filter: var(--backdrop);
+  box-shadow: var(--shadow-md);
+  display: grid;
+  gap: 10px;
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  border: 1px solid var(--border-soft);
+  background:
+    radial-gradient(18px 18px at 30% 30%, rgba(14, 140, 92, 0.16), rgba(14, 140, 92, 0)),
+    radial-gradient(18px 18px at 70% 70%, rgba(217, 141, 44, 0.10), rgba(217, 141, 44, 0)),
+    rgba(255, 255, 255, 0.80);
+}
+
+@media (max-width: 1100px) {
+  .featureGrid { grid-template-columns: repeat(2, 1fr); }
+}

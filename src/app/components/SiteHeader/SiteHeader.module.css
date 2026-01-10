@@ -1,0 +1,297 @@
+.containerHeader {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 14px var(--pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+/* Skip link */
+.skipLink {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  color: var(--text);
+  z-index: 999;
+}
+.skipLink:focus { left: 12px; top: 12px; }
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--border-soft);
+
+  /* orchard glass */
+  background: rgba(252, 253, 247, 0.72);
+  backdrop-filter: blur(14px);
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 220px;
+  color: inherit;
+}
+
+.brandMark {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 10px;
+  padding: 0.35rem;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  box-shadow: var(--shadow-md);
+
+  display: grid;
+  place-items: center;
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.brand:hover .brandMark {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.brandLogo {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.brandText { display: grid; gap: 2px; }
+.brandName {
+  font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem);
+  font-weight: 900;
+  letter-spacing: 0.1rem;
+  line-height: 1.05;
+  font-family: var(--font-display);
+
+  background: linear-gradient(
+    90deg,
+    rgba(118, 8, 36, 0.98),   /* deep berry */
+    rgba(186, 18, 62, 0.96),  /* cherry */
+    rgba(234, 64, 118, 0.92)  /* strawberry */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow:
+    0 12px 28px rgba(166, 11, 50, 0.39);
+}
+
+
+.brandName::after {
+  content: "";
+  display: block;
+  width: 10rem;
+  height: 4px;
+  margin-top: 6px;
+  border-radius: 999px;
+
+  /* red fruit gradient underline */
+  background: linear-gradient(
+    90deg,
+    rgba(142, 12, 44, 0.95),
+    rgba(210, 34, 78, 0.90),
+    rgba(255, 120, 165, 0.85)
+  );
+
+  box-shadow:
+    0 10px 22px rgba(142, 12, 44, 0.14),
+    0 12px 34px rgba(210, 34, 78, 0.10);
+}
+
+
+.brandTagline {
+  color: var(--muted);
+  line-height: 1.15;
+}
+
+/* Desktop nav */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.navLink {
+  color: var(--muted);
+  padding: 10px 12px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  transition:
+    transform var(--t-fast),
+    background var(--t-fast),
+    border-color var(--t-fast),
+    color var(--t-fast);
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  color: var(--text);
+  background: rgba(16, 20, 14, 0.04);
+  border-color: var(--border-soft);
+  transform: translateY(-1px);
+}
+
+.navLink:focus-visible,
+.menuBtn:focus-visible,
+.mobileLink:focus-visible,
+.mobileCta:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+.navCta {
+  color: var(--text);
+  border-color: rgba(34, 112, 76, 0.20);
+  background:
+    radial-gradient(14px 14px at 20% 25%, rgba(34, 112, 76, 0.18), rgba(34, 112, 76, 0)),
+    rgba(34, 112, 76, 0.08);
+}
+
+/* Mobile menu button */
+.menuBtn {
+  display: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: transform var(--t-fast), box-shadow var(--t-fast), background var(--t-fast);
+}
+
+.menuBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+  background: rgba(252, 253, 247, 0.86);
+}
+
+.menuIcon {
+  width: 18px;
+  height: 12px;
+  display: grid;
+  gap: 6px;
+  margin: 0 auto;
+}
+
+.bar {
+  height: 2px;
+  border-radius: 99px;
+  background: rgba(16, 20, 14, 0.78);
+}
+
+/* Mobile panel */
+.mobilePanel {
+  display: none;
+  border-bottom: 1px solid var(--border-soft);
+  background: rgba(252, 253, 247, 0.72);
+  backdrop-filter: blur(14px);
+
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 220ms ease;
+}
+
+.mobilePanelOpen {
+  max-height: 520px; /* enough for links */
+}
+
+.mobileInner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 12px var(--pad-x) 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.mobileTitle {
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  color: var(--text);
+}
+
+.mobileLinks {
+  display: grid;
+  gap: 8px;
+}
+
+.mobileLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px;
+  border-radius: 16px;
+  border: 1px solid var(--border-soft);
+  background: rgba(16, 20, 14, 0.03);
+  color: var(--text);
+  transition: transform var(--t-fast), background var(--t-fast), border-color var(--t-fast);
+}
+
+.mobileLink:hover {
+  transform: translateY(-1px);
+  background: rgba(16, 20, 14, 0.05);
+  border-color: var(--border);
+}
+
+.mobileDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(34, 112, 76, 0.65);
+  box-shadow: 0 0 0 3px rgba(34, 112, 76, 0.14);
+}
+
+.mobileCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(34, 112, 76, 0.22);
+  background:
+    radial-gradient(18px 18px at 18% 25%, rgba(34, 112, 76, 0.20), rgba(34, 112, 76, 0)),
+    rgba(34, 112, 76, 0.10);
+  color: var(--text);
+  font-weight: 700;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.mobileCta:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.mobileNote {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+/* Breakpoint: collapse to mobile */
+@media (max-width: 860px) {
+  .nav { display: none; }
+  .menuBtn { display: inline-flex; align-items: center; justify-content: center; }
+  .mobilePanel { display: block; }
+}
+
+/* Tiny screens: tighten brand text */
+@media (max-width: 420px) {
+  .brandTagline { display: none; }
+}
