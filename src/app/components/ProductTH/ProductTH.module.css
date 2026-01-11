@@ -1,0 +1,222 @@
+/* src\app\components\ProductTH\ProductTH.module.css */
+
+/* --- Fruit tabs (buttons) --- */
+.fruitTabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 14px 0 12px;
+}
+
+.fruitTab {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.5rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: rgba(252, 253, 247, 0.72);
+  box-shadow: 0 10px 26px rgba(10, 14, 10, 0.06);
+  cursor: pointer;
+  transition: transform var(--t-fast), border-color var(--t-fast),
+    box-shadow var(--t-fast);
+}
+
+.fruitTab:hover {
+  transform: translateY(-1px);
+  border-color: rgba(34, 112, 76, 0.22);
+  box-shadow: 0 14px 34px rgba(10, 14, 10, 0.1);
+}
+
+.fruitTab:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+.fruitTabActive {
+  border-color: rgba(34, 112, 76, 0.28);
+  background: rgba(34, 112, 76, 0.5);
+}
+
+.fruitTabActive .fruitTabName {
+  color: white;
+}
+
+.fruitTabActive .tagOk {
+  color: white;
+  background: rgba(34, 112, 76, 0.5);
+  border-color: rgba(34, 112, 76, 0.28);
+}
+
+.fruitTabActive .tagWarn {
+  color: white;
+  border-color: rgba(217, 141, 44, 0.5);
+  background: rgba(224, 140, 31, 0.8);
+}
+
+.fruitTabActive .tagRed {
+  color: white;
+  border-color: rgba(220, 38, 38, 0.5);
+  background: rgba(220, 38, 38, 0.8);
+}
+
+.fruitTabName {
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+}
+
+/* mini status pill inside button */
+.tagMini {
+  padding: 5px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.55);
+  font-size: 0.82rem;
+  color: rgba(11, 16, 12, 0.78);
+}
+
+/* --- All cards grid (when "ดูทั้งหมด") --- */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 1100px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* show one card */
+.cardSingle {
+  display: grid;
+}
+
+/* optional: keep single card in a nice width */
+.cardSingle .itemCard {
+  max-width: 560px;
+}
+
+/* --- Card --- */
+.itemCard {
+  padding: 18px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--glass);
+  backdrop-filter: var(--backdrop);
+  box-shadow: var(--shadow-md);
+  display: grid;
+  gap: 10px;
+}
+
+.itemTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.itemName {
+  margin: 0;
+  font-weight: 900;
+  font-size: 1.12rem;
+  color: var(--text);
+}
+
+.itemNote {
+  margin: 0;
+  color: var(--muted);
+}
+
+.itemMeta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.pill {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.pillLabel {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.pillValue {
+  font-weight: 900;
+  color: var(--text);
+}
+
+.itemLink {
+  margin-top: 6px;
+  color: rgba(14, 140, 92, 0.95);
+  font-weight: 900;
+  width: fit-content;
+}
+
+.tag {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.55);
+  font-size: 0.9rem;
+  color: rgba(11, 16, 12, 0.78);
+}
+
+.tagOk {
+  border-color: rgba(14, 140, 92, 0.18);
+  background: rgba(14, 140, 92, 0.08);
+}
+
+.tagWarn {
+  border-color: rgba(217, 141, 44, 0.2);
+  background: rgba(217, 141, 44, 0.1);
+}
+
+.tagRed {
+  border-color: rgba(220, 38, 38, 0.2);
+  background: rgba(220, 38, 38, 0.1);
+}
+
+.tagSoft {
+  border-color: var(--border-soft);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* --- Notice --- */
+.notice {
+  margin-top: 14px;
+  padding: 18px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.noticeTitle {
+  font-weight: 900;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.noticeText {
+  margin: 0;
+  color: var(--muted);
+}

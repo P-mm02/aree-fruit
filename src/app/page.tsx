@@ -4,7 +4,7 @@ import SiteHeader from './components/SiteHeader/SiteHeader'
 import HeroSlider from './components/HeroSlider/HeroSlider'
 import HeroTH from './components/HeroTH/HeroTH'
 import AboutOrchardTH from './components/AboutOrchardTH/AboutOrchardTH'
-import SeasonalShowcaseTH from './components/SeasonalShowcaseTH/SeasonalShowcaseTH'
+import ProductTH from './components/ProductTH/ProductTH'
 import WhyChooseTH from './components/WhyChooseTH/WhyChooseTH'
 import HowToOrderTH from './components/HowToOrderTH/HowToOrderTH'
 import ReviewsTH from './components/ReviewsTH/ReviewsTH'
@@ -31,7 +31,7 @@ export default function HomePage() {
         <HeroSlider />
         <HeroTH />
         <AboutOrchardTH />
-        <SeasonalShowcaseTH />
+        <ProductTH />
         <WhyChooseTH />
         <HowToOrderTH />
         <ReviewsTH />

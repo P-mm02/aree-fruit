@@ -71,8 +71,3 @@
   background: rgba(255, 255, 255, 0.50);
 }
 
-/* Responsive shared bits */
-@media (max-width: 640px) {
-  .section { padding: 44px 0; }
-  .heroTitle { font-size: 2.35rem; } /* keep if your page still references it */
-}

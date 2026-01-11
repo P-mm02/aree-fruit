@@ -60,7 +60,6 @@
 
 .brand:hover .brandMark {
   transform: translateY(-1px);
-  box-shadow: var(--shadow-lg);
 }
 
 .brandLogo {
