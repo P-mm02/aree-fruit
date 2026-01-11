@@ -105,10 +105,17 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.slider__btn:hover {
-  transform: translateY(-50%) translateY(-1px);
-  border-color: rgba(255, 255, 255, 0.26);
-  backdrop-filter: blur(4px);
+/* Only apply hover effects on real hover devices (desktop / trackpad) */
+@media (hover: hover) and (pointer: fine) {
+  .slider__btn:hover {
+    transform: translateY(-50%) translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.26);
+    backdrop-filter: blur(4px);
+  }
+}
+
+.slider__btn:active {
+  transform: translateY(-50%) scale(0.98);
 }
 
 .slider__btn:focus-visible {
