@@ -32,10 +32,7 @@ export default function HomePage() {
         <HeroTH />
         <AboutOrchardTH />
         <ProductTH />
-        <WhyChooseTH />
         <HowToOrderTH />
-        <ReviewsTH />
-        <FAQTH />
         <ContactTH />
       </main>
 

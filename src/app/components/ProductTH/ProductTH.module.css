@@ -81,38 +81,48 @@
 /* --- All cards grid (when "ดูทั้งหมด") --- */
 .cardGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* ✅ allow shrink */
   gap: 14px;
+  width: 100%;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1440px) {
   .cardGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* ✅ allow shrink */
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .cardGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr); /* ✅ allow shrink */
   }
 }
 
 /* show one card */
 .cardSingle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 40rem;
+
+  /* center the whole block */
+  margin: 0 auto;
+
+  /* (optional) if you want the card centered within the grid area */
+  justify-items: center;
 }
 
 /* --- Card --- */
 .itemCard {
+  width: 100%;
+  min-width: 0;          /* ✅ THE key for grid shrinking */
   padding: 1.4rem;
   border-radius: var(--r-md);
   border: 1px solid var(--border);
   background: var(--glass);
   backdrop-filter: var(--backdrop);
   box-shadow: var(--shadow-md);
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0.8rem;
 }
 
@@ -121,6 +131,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  min-width: 0; /* ✅ allow flex children to shrink */
 }
 
 .itemName {
@@ -128,7 +139,13 @@
   font-weight: 900;
   font-size: 1.12rem;
   color: var(--text);
+
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
+
 
 .itemNote {
   margin: 0;

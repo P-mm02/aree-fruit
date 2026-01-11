@@ -45,12 +45,12 @@ export default function HowToOrderTH() {
           ))}
         </div>
 
-        <div className={styles.quickTip}>
+        {/* <div className={styles.quickTip}>
           <div className={styles.quickTipTitle}>บอกเราง่าย ๆ แบบนี้ก็ได้</div>
           <div className={styles.quickTipBox}>
             “อยากได้มะม่วงหวาน ๆ สำหรับ 2 คน งบ 600 ส่งกรุงเทพฯ”
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   )
