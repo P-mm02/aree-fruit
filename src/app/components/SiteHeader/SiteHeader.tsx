@@ -83,7 +83,7 @@ export default function SiteHeader() {
           <div className={styles.brandText}>
             <div className={styles.brandName}>สวนแม่อารี</div>
             <div className={styles.brandTagline}>
-              ผลไม้ตามฤดูกาล ส่งตรงจากสวน
+              ผลไม้คุณภาพดี ส่งตรงจากสวน
             </div>
           </div>
         </a>

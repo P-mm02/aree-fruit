@@ -101,7 +101,7 @@ export default function HeroTH() {
               </div>
               <div className={styles.miniStat}>
                 <div className={styles.miniKey}>บริการดี</div>
-                <div className={styles.miniVal}>แนะนำได้</div>
+                <div className={styles.miniVal}>ให้คำแนะนำได้</div>
               </div>
             </div>
           </div>
