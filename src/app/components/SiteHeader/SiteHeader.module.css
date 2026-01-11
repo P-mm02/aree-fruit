@@ -1,5 +1,4 @@
 .containerHeader {
-  max-width: var(--container);
   margin: 0 auto;
   padding: 14px var(--pad-x);
   display: flex;
@@ -36,22 +35,24 @@
 
 /* Brand */
 .brand {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
   min-width: 220px;
   color: inherit;
+  padding-left: 7rem;
 }
 
 .brandMark {
-  width: 3.25rem;
-  height: 3.25rem;
-  border-radius: 10px;
-  padding: 0.35rem;
-  border: 1px solid var(--border);
-  background: var(--glass);
-  box-shadow: var(--shadow-md);
-
+  position: fixed;
+  z-index: 50;
+  top: 1rem;
+  left: 1rem;
+  width: 6rem;
+  height: 6rem;
+  border: none;
+  background: none;
   display: grid;
   place-items: center;
   transition: transform var(--t-fast), box-shadow var(--t-fast);
@@ -214,7 +215,7 @@
 
 .mobileInner {
   max-width: var(--container);
-  margin: 0 auto;
+  margin: 1rem auto;
   padding: 12px var(--pad-x) 18px;
   display: grid;
   gap: 12px;

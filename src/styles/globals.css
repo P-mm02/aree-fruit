@@ -94,18 +94,32 @@ body {
   /* 🌿 Orchard shade background: darker base, gentle highlights */
   background-color: var(--bg);
   background-image:
-  url(/images/bg/orchard-hero.svg),
-  url(/images/bg/orchard-bokeh.svg),
-  url(/images/bg/orchard-vines.svg),
-  url(/images/bg/orchard-leaves.svg),
-  url(/images/bg/orchard-grain.svg),
-  linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 76%);
+    url("/images/bg/orchard-bokeh.svg"),
+    url("/images/bg/orchard-leaves.svg"),
+    linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 76%);
 
-  background-repeat: no-repeat, no-repeat, no-repeat, repeat, no-repeat;
-  background-size: auto, auto, auto, 1000px 1000px, auto;
-  background-position: center, center, center, center, center;
-  background-attachment: scroll, scroll, scroll, scroll, scroll;
+  /* hero, bokeh, leaves, gradient */
+  background-repeat:
+    no-repeat,
+    repeat,
+    no-repeat;
+
+  /* Make hero & bokeh large and subtle; leaves as a wide base texture */
+  background-size:
+    min(1800px, 140vw) auto,
+    2000px 500px,
+    cover;
+
+  /* Place hero toward top, bokeh slightly lower, leaves anchored at bottom */
+  background-position:
+    center 12%,
+    center bottom,
+    center;
+
+  /* Keep it consistent and smooth */
+  background-attachment: scroll;
 }
+
 
 main {
   flex: 1 0 auto;
