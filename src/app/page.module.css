@@ -1,6 +1,3 @@
-/* Shared page-only wrappers */
-.page { min-height: 100dvh; }
-.main { flex: 1 0 auto; }
 
 .container {
   max-width: var(--container);
@@ -9,7 +6,7 @@
 }
 
 /* Shared section spacing + headings */
-.section { padding: 56px 0; }
+.section { padding: 2rem 0 0 0; }
 
 .sectionHead { display: grid; gap: 10px; margin-bottom: 16px; }
 
