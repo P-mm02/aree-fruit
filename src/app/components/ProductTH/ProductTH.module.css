@@ -99,24 +99,21 @@
 
 /* show one card */
 .cardSingle {
-  display: grid;
-}
-
-/* optional: keep single card in a nice width */
-.cardSingle .itemCard {
-  max-width: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* --- Card --- */
 .itemCard {
-  padding: 18px;
+  padding: 1.4rem;
   border-radius: var(--r-md);
   border: 1px solid var(--border);
   background: var(--glass);
   backdrop-filter: var(--backdrop);
   box-shadow: var(--shadow-md);
   display: grid;
-  gap: 10px;
+  gap: 0.8rem;
 }
 
 .itemTop {
