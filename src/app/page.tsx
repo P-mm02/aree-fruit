@@ -1,6 +1,7 @@
 import styles from './page.module.css'
 
 import SiteHeader from './components/SiteHeader/SiteHeader'
+import HeroSlider from './components/HeroSlider/HeroSlider'
 import HeroTH from './components/HeroTH/HeroTH'
 import AboutOrchardTH from './components/AboutOrchardTH/AboutOrchardTH'
 import SeasonalShowcaseTH from './components/SeasonalShowcaseTH/SeasonalShowcaseTH'
@@ -12,7 +13,6 @@ import ContactTH from './components/ContactTH/ContactTH'
 import SiteFooterTH from './components/SiteFooterTH/SiteFooterTH'
 
 export default function HomePage() {
-  // Basic JSON-LD (safe placeholders). Replace with real info when ready.
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -20,9 +20,7 @@ export default function HomePage() {
     description:
       'สวนผลไม้ตามฤดูกาล คัดเกรด ส่งตรงจากสวน แพ็กอย่างดี พร้อมจัดส่ง',
     areaServed: 'TH',
-    sameAs: [
-      'https://example.com', // TODO: replace with LINE/FB/IG links
-    ],
+    sameAs: ['https://example.com'],
   }
 
   return (
@@ -30,6 +28,7 @@ export default function HomePage() {
       <SiteHeader />
 
       <main id="main" className={styles.main}>
+        <HeroSlider />
         <HeroTH />
         <AboutOrchardTH />
         <SeasonalShowcaseTH />

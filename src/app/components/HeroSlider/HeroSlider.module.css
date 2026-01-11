@@ -1,0 +1,92 @@
+.hero {
+  position: relative;
+  padding: 0 0 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  margin: 0;
+}
+
+/* wrapper */
+.sliderWrap {
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+/* ✅ correct scoping (your old ".slider :global(.slider)" was wrong) */
+.sliderWrap :global(.slider) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* viewport */
+.sliderWrap :global(.slider__viewport) {
+  width: 60%;
+  margin: 0 auto; /* ✅ center it on PC */
+  background: none;
+  border-radius: 0px;
+  border: none;
+}
+
+/* media */
+.sliderWrap :global(.slider__media) {
+  aspect-ratio: 16 / 9;
+}
+
+.sliderWrap :global(.slider__img) {
+  object-fit: contain;
+}
+
+/* caption off */
+.sliderWrap :global(.slider__caption) {
+  display: none;
+}
+
+/* buttons */
+.sliderWrap :global(.slider__btn) {
+  color: rgba(16, 20, 14, 0.88);
+}
+
+.sliderWrap :global(.slider__btn:hover) {
+  background: rgba(34, 112, 76, 0.12);
+}
+
+/* dots */
+.sliderWrap :global(.slider__dots) {
+  background: transparent;
+  padding-top: 0.4rem;
+}
+
+.sliderWrap :global(.slider__dot) {
+  border: 1px solid rgba(16, 20, 14, 0.22);
+  background: rgba(16, 20, 14, 0.10);
+}
+
+.sliderWrap :global(.slider__dot.is-active) {
+  background: rgba(34, 112, 76, 0.88);
+  border-color: rgba(34, 112, 76, 0.88);
+}
+
+/* focus ring */
+.sliderWrap :global(.slider:focus-visible) {
+  outline: 3px solid rgba(34, 112, 76, 0.35);
+  outline-offset: 6px;
+  border-radius: var(--r-lg);
+}
+
+@media (max-width: 768px) {
+  .sliderWrap :global(.slider__viewport) {
+    width: 100%;
+  }
+  .sliderWrap {
+    border-radius: 0px;
+  }
+}

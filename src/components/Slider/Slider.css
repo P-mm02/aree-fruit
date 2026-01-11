@@ -1,0 +1,181 @@
+/* src\components\Slider\Slider.css */
+
+.slider {
+  width: 100%;
+  margin: 0 auto;
+  outline: none;
+}
+
+/* Focus ring (you can swap to var(--focus) if you prefer) */
+.slider:focus-visible {
+  outline: 3px solid rgba(56, 189, 248, 0.55);
+  outline-offset: 6px;
+  border-radius: 18px;
+}
+
+.slider__viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.2);
+
+  /* ✅ touch drag support:
+     allow vertical scroll, but horizontal drag is handled by JS */
+  touch-action: pan-y;
+
+  /* nicer feel on desktop */
+  cursor: grab;
+}
+
+.slider__viewport:active {
+  cursor: grabbing;
+}
+
+.slider__track {
+  display: flex;
+  width: 100%;
+  transform: translate3d(0, 0, 0);
+  transition: transform 320ms ease;
+  will-change: transform;
+
+  /* ✅ prevent text selection while dragging */
+  user-select: none;
+}
+
+.slider__track--no-anim {
+  transition: none !important;
+}
+
+.slider__slide {
+  flex: 0 0 100%;
+}
+
+.slider__figure {
+  margin: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.slider__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+}
+
+.slider__img {
+  object-fit: contain;
+
+  /* ✅ prevent browser image dragging ghost */
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Caption */
+.slider__caption {
+  padding: 0.85rem 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* Buttons */
+.slider__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: grid;
+  place-items: center;
+
+  /* ✅ IMPORTANT:
+     old: width: 20% (blocks swipe on mobile edges)
+     new: fixed-ish button zone */
+  width: clamp(56px, 12vw, 96px);
+  height: 100%;
+
+  border-radius: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0);
+  color: rgba(255, 255, 255, 0.95);
+
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+  user-select: none;
+
+  /* keep taps fast */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slider__btn:hover {
+  transform: translateY(-50%) translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.slider__btn:focus-visible {
+  outline: 3px solid rgba(56, 189, 248, 0.55);
+  outline-offset: 3px;
+}
+
+.slider__btn--left {
+  left: 0;
+}
+
+.slider__btn--right {
+  right: 0;
+}
+
+/* Dots */
+.slider__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 0 0 1rem 0;
+}
+
+.slider__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.slider__dot:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.slider__dot.is-active {
+  background: rgba(56, 189, 248, 0.9);
+  border-color: rgba(56, 189, 248, 0.9);
+}
+
+/* Screen-reader helper */
+.slider__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ✅ Optional: reduce motion friendliness */
+@media (prefers-reduced-motion: reduce) {
+  .slider__track {
+    transition: none !important;
+  }
+  .slider__btn,
+  .slider__dot {
+    transition: none !important;
+  }
+}
