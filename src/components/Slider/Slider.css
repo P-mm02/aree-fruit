@@ -81,37 +81,34 @@
 }
 
 /* Buttons */
+/* Buttons (floating, swipe-friendly) */
 .slider__btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+
   display: grid;
   place-items: center;
 
-  /* ✅ IMPORTANT:
-     old: width: 20% (blocks swipe on mobile edges)
-     new: fixed-ish button zone */
-  width: clamp(56px, 12vw, 96px);
-  height: 100%;
-
-  border-radius: 0;
-  border: none;
-  background: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(179, 167, 167, 0.32);
+  backdrop-filter: blur(1px);
   color: rgba(255, 255, 255, 0.95);
 
   cursor: pointer;
-  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
   user-select: none;
-
-  /* keep taps fast */
   -webkit-tap-highlight-color: transparent;
 }
 
 .slider__btn:hover {
   transform: translateY(-50%) translateY(-1px);
-  border-color: rgba(255, 255, 255, 0.28);
-  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.26);
+  backdrop-filter: blur(4px);
 }
 
 .slider__btn:focus-visible {
@@ -120,12 +117,13 @@
 }
 
 .slider__btn--left {
-  left: 0;
+  left: 12px;
 }
 
 .slider__btn--right {
-  right: 0;
+  right: 12px;
 }
+
 
 /* Dots */
 .slider__dots {
