@@ -140,14 +140,6 @@ export default function Slider({
         e.preventDefault()
         next()
       }
-      if (e.key === 'Enter') {
-        // open current slide
-        e.preventDefault()
-        const currentReal = isLoop
-          ? (indexRef.current - 1 + total) % total
-          : indexRef.current
-        openModal(currentReal)
-      }
     }
 
     el.addEventListener('keydown', onKeyDown)
@@ -238,7 +230,7 @@ export default function Slider({
     if (total <= 1) return
     if (isModalOpen) return
 
-    // ✅ don't start dragging when clicking UI controls (fix PC buttons)
+    // ✅ don't start dragging when clicking UI controls
     if (isInteractiveTarget(e.target)) return
 
     if (e.button !== 0 && e.pointerType === 'mouse') return
@@ -270,7 +262,6 @@ export default function Slider({
     lastXRef.current = e.clientX
 
     if (Math.abs(dx) > 6) didDragRef.current = true
-
     setDragPx(dx)
   }
 
@@ -286,7 +277,6 @@ export default function Slider({
     const dx = lastXRef.current - startXRef.current
 
     const threshold = Math.max(44, Math.round(width * 0.18))
-
     const goPrev = dx > threshold
     const goNext = dx < -threshold
 
@@ -312,16 +302,6 @@ export default function Slider({
     if (!isDragging) return
     if (pointerIdRef.current !== e.pointerId) return
     endDrag(e.pointerId)
-  }
-
-  // Click-to-open modal (but never after drag)
-  const onSlideClick = () => {
-    if (isModalOpen) return
-    if (isDragging) return
-    if (didDragRef.current) return
-
-    const real = isLoop ? (index - 1 + total) % total : index
-    openModal(real)
   }
 
   // Modal: lock scroll + focus close button
@@ -388,9 +368,6 @@ export default function Slider({
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerCancel}
-          onClick={onSlideClick}
-          role="button"
-          aria-label="Open image"
         >
           <div
             className={`slider__track ${
@@ -469,6 +446,46 @@ export default function Slider({
               />
             </svg>
           </button>
+
+          {/* ✅ Zoom button (doesn't break swipe) */}
+          <button
+            type="button"
+            className="slider__zoom"
+            onPointerDown={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.stopPropagation()
+              if (didDragRef.current) return
+              openModal(realIndex)
+            }}
+            aria-label="Zoom image"
+          >
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+              <path
+                d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M21 21l-4.2-4.2"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M10.5 7.8v5.4M7.8 10.5h5.4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
         </div>
 
         <div
@@ -505,7 +522,6 @@ export default function Slider({
           aria-modal="true"
           aria-label="Image preview"
           onMouseDown={(e) => {
-            // click backdrop to close
             if (e.target === e.currentTarget) closeModal()
           }}
         >
