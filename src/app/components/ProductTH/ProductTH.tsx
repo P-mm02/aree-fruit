@@ -108,7 +108,7 @@ export default function SeasonalShowcaseTH() {
             aria-selected={showAll}
           >
             <span className={styles.fruitTabName}>ดูทั้งหมด</span>
-            <span className={`${styles.tagMini} ${styles.tagSoft}`}>
+            <span className={`${styles.tagMini} ${styles.tagOk}`}>
               {items.length}
             </span>
           </button>
