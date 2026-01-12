@@ -15,7 +15,7 @@ const SITE_DESCRIPTION =
  */
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, '') ||
-  'http://localhost:3000'
+  'https://aree-fruit.vercel.app'
 
 const OG_IMAGE = '/preview/preview-aree.jpg' // ✅ your file in /public/preview/
 
