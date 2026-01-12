@@ -7,7 +7,7 @@ const SITE_NAME_EN = "Aree's Fruit"
 const SITE_NAME = `${SITE_NAME_TH} | ${SITE_NAME_EN}`
 
 const SITE_DESCRIPTION =
-  'สวนผลไม้คุณภาพ ส่งตรงจากสวนแม่อารี ผลไม้ตามฤดูกาล สดใหม่ คัดเกรด พร้อมจัดส่งทั่วไทย'
+  'ผลไม้คุณภาพดี วิตามินสูง รสชาติดี ส่งตรงจากสวน สดใหม่ คัดเกรด พร้อมจัดส่งทั่วไทย'
 
 /**
  * Set your real domain in .env:
@@ -16,6 +16,8 @@ const SITE_DESCRIPTION =
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, '') ||
   'http://localhost:3000'
+
+const OG_IMAGE = '/preview/preview-aree.jpg' // ✅ your file in /public/preview/
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -43,7 +45,7 @@ export const metadata: Metadata = {
     locale: 'th_TH',
     images: [
       {
-        url: '/og/og.jpg', // create later (recommended: 1200x630)
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
         alt: SITE_NAME,
@@ -55,7 +57,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    images: ['/og/og.jpg'],
+    images: [OG_IMAGE],
   },
 
   icons: {
@@ -81,7 +83,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: '#06110b', // match your --bg (orchard dark)
+  themeColor: '#06110b',
 }
 
 export default function RootLayout({
