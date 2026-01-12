@@ -148,7 +148,7 @@ select {
 /* 🎯 Utility classes */
 .text-center { text-align: center !important; }
 .text-left { text-align: left !important; }
-.text-indent { text-indent: 2rem; }
+.text-indent { text-indent: 2rem !important; }
 .text-wrap {
   white-space: normal !important;
   word-break: break-word !important;
