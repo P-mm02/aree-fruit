@@ -1,5 +1,6 @@
 import styles from './SiteFooterTH.module.css'
 import styles_share from '@/app/page.module.css'
+import Image from 'next/image'
 
 export default function SiteFooterTH() {
   return (
@@ -7,7 +8,16 @@ export default function SiteFooterTH() {
       <div className={styles_share.container}>
         <div className={styles.footerTop}>
           <div className={styles.footerBrand}>
-            <div className={styles.brandMark} aria-hidden="true" />
+            <div className={styles.brandMark}>
+              <Image
+                src="/logo/logo_aree_nobg.svg"
+                alt="โลโก้ สวนแม่อารี"
+                width={64}
+                height={64}
+                priority
+                className={styles.brandLogo}
+              />
+            </div>
             <div>
               <div className={styles.footerName}>สวนแม่อารี</div>
               <div className={styles.footerMuted}>

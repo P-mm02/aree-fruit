@@ -5,10 +5,6 @@ import HeroSlider from './components/HeroSlider/HeroSlider'
 import HeroTH from './components/HeroTH/HeroTH'
 import AboutOrchardTH from './components/AboutOrchardTH/AboutOrchardTH'
 import ProductTH from './components/ProductTH/ProductTH'
-import WhyChooseTH from './components/WhyChooseTH/WhyChooseTH'
-import HowToOrderTH from './components/HowToOrderTH/HowToOrderTH'
-import ReviewsTH from './components/ReviewsTH/ReviewsTH'
-import FAQTH from './components/FAQTH/FAQTH'
 import ContactTH from './components/ContactTH/ContactTH'
 import SiteFooterTH from './components/SiteFooterTH/SiteFooterTH'
 
@@ -32,7 +28,6 @@ export default function HomePage() {
         <HeroTH />
         <AboutOrchardTH />
         <ProductTH />
-        <HowToOrderTH />
         <ContactTH />
       </main>
 

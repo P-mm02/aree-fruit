@@ -73,8 +73,8 @@ export default function SiteHeader() {
             <Image
               src="/logo/logo_aree_nobg.svg"
               alt="โลโก้ สวนแม่อารี"
-              width={64}
-              height={64}
+              width={128}
+              height={128}
               priority
               className={styles.brandLogo}
             />

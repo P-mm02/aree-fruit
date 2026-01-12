@@ -20,12 +20,11 @@ export default function HowToOrderTH() {
   return (
     <section
       id="how"
-      className={styles_share.section}
       aria-label="วิธีสั่งซื้อ"
     >
-      <div className={styles_share.container}>
+      <div >
         <div className={styles_share.sectionHead}>
-          <h2 className={styles_share.h2}>วิธีสั่งซื้อ</h2>
+          <h2 className={styles_share.h2}>วิธีสั่งซื้อ / ติดต่อสวน</h2>
           <p className={styles_share.lead}>
             ขั้นตอนเรียบง่าย ตอบไว และช่วยแนะนำให้เหมาะกับความต้องการจริง
           </p>

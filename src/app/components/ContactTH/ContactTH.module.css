@@ -1,3 +1,5 @@
+/* src\app\components\ContactTH\ContactTH.module.css */
+
 .contactBox {
   padding: 22px;
   border-radius: var(--r-lg);
@@ -7,52 +9,170 @@
     radial-gradient(700px 420px at 80% 55%, rgba(217, 141, 44, 0.12), rgba(217, 141, 44, 0)),
     rgba(255,255,255,0.56);
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.05fr 0.95fr;
   gap: 18px;
   overflow: hidden;
 }
 
-.contactActions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
-.contactHint { margin-top: 12px; color: var(--muted); font-size: 0.92rem; }
-.contactHint code { color: rgba(11, 16, 12, 0.90); }
+.contactLeft { display: grid; gap: 12px; }
 
+/* icon actions */
+.contactActions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.iconBtn {
+  width: 4rem;
+  height: 4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--t-fast), border-color var(--t-fast),
+    box-shadow var(--t-fast);
+}
+
+.iconBtn:hover {
+  transform: translateY(-1px);
+}
+
+.iconBtn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+.iconImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* quick info */
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.infoCard {
+  padding: 12px 12px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--glass);
+  backdrop-filter: var(--backdrop);
+  box-shadow: 0 10px 26px rgba(10, 14, 10, 0.06);
+}
+
+.infoCardWide { grid-column: 1 / -1; }
+
+.infoLabel {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.infoValue {
+  color: var(--text);
+  font-weight: 900;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.infoValue:hover { text-decoration: underline; }
+
+.primaryLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+/* right column embeds */
 .contactRight {
-  position: relative;
+  display: grid;
+  gap: 12px;
+}
+
+.embedCard {
+  height: fit-content;
+  padding-bottom: 1rem;
   border-radius: var(--r-md);
   border: 1px solid var(--border);
   background: rgba(255,255,255,0.42);
   overflow: hidden;
+  box-shadow: 0 14px 44px rgba(10, 14, 10, 0.08);
 }
 
-.contactOrb {
-  position: absolute;
-  inset: -24%;
-  background:
-    radial-gradient(300px 240px at 30% 30%, rgba(14, 140, 92, 0.16), rgba(14, 140, 92, 0)),
-    radial-gradient(300px 240px at 70% 70%, rgba(217, 141, 44, 0.12), rgba(217, 141, 44, 0));
-  filter: blur(12px);
+.marginTop2rem{
+  margin: 2rem 0;
 }
 
-.contactMini {
-  position: relative;
-  margin: 16px;
-  padding: 16px;
-  border-radius: var(--r-md);
-  border: 1px solid var(--border-soft);
-  background: var(--glass);
-  backdrop-filter: var(--backdrop);
+.embedHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 12px;
+  border-bottom: 1px solid var(--border-soft);
+  background: transparent;
 }
 
-.contactMiniTitle { font-weight: 900; margin-bottom: 10px; color: var(--text); }
-
-.contactList {
-  margin: 0;
-  padding-left: 18px;
-  color: var(--muted);
-  display: grid;
-  gap: 6px;
+.embedTitle {
+  font-weight: 900;
+  color: var(--text);
 }
 
-@media (max-width: 1100px) {
+.embedLink {
+  color: rgba(14, 140, 92, 0.95);
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.embedLink:hover { text-decoration: underline; }
+
+.embedFrame {
+  width: 100%;
+  height: 480px;
+  border: 0;
+  display: block;
+  background: rgba(255,255,255,0.35);
+}
+
+/* centers iframe area inside the card */
+.embedCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;            /* important so iframe doesn't touch edges */
+}
+
+/* FB plugin needs explicit width/height to look centered */
+.embedFrameFb {
+  max-width: 100%;
+  height: 520px;
+  border: 0;
+  display: block;
+  border-radius: 1rem;
+}
+
+/* keep map 100% */
+.embedFrame {
+  width: 100%;
+  height: 480px;
+  border: 0;
+  display: block;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.35);
+}
+
+@media (max-width: 769px) {
   .contactBox { grid-template-columns: 1fr; }
+  .embedFrame { height: 320px; }
+  .infoGrid { grid-template-columns: 1fr; }
 }
+
+
