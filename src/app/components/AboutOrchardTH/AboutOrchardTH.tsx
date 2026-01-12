@@ -3,7 +3,7 @@ import styles_share from '@/app/page.module.css'
 
 export default function AboutOrchardTH() {
   return (
-    <section className={styles_share.section} aria-label="เกี่ยวกับสวน">
+    <section id='about' className={styles_share.section} aria-label="เกี่ยวกับสวน">
       <div className={styles_share.container}>
         <div className={styles_share.sectionHead}>
           <h2 className={styles_share.h2}>รู้จักสวนแม่อารี</h2>

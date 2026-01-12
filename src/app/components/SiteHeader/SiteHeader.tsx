@@ -7,10 +7,9 @@ import styles from './SiteHeader.module.css'
 type NavItem = { href: string; label: string }
 
 const NAV: NavItem[] = [
-  { href: '#seasonal', label: 'ผลไม้วันนี้' },
-  { href: '#why', label: 'ทำไมต้องเรา' },
-  { href: '#how', label: 'วิธีสั่งซื้อ' },
-  { href: '#faq', label: 'คำถามที่พบบ่อย' },
+  { href: '#top', label: 'หน้าแรก' },
+  { href: '#about', label: 'เกี่ยวกับเรา' },
+  { href: '#products', label: 'ผลไม้วันนี้' },
 ]
 
 export default function SiteHeader() {
@@ -53,21 +52,72 @@ export default function SiteHeader() {
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
-  function onNavClick() {
-    setOpen(false)
+  // ✅ FIX: close panel first, then scroll (prevents the "jump")
+  function onNavClick(href: string) {
+    return (e: React.MouseEvent<HTMLAnchorElement>) => {
+      // If panel isn't open, let browser handle normal anchor jump
+      if (!open) return
+
+      e.preventDefault()
+      setOpen(false)
+
+      const id = href.startsWith('#') ? href.slice(1) : href
+      const el = document.getElementById(id)
+      if (!el) return
+
+      const prefersReduced =
+        typeof window !== 'undefined' &&
+        window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+
+      // If reduced motion, scroll immediately after close
+      if (prefersReduced) {
+        requestAnimationFrame(() => {
+          el.scrollIntoView({ behavior: 'auto', block: 'start' })
+          history.replaceState(null, '', `#${id}`)
+        })
+        return
+      }
+
+      const panel = panelRef.current
+      let done = false
+
+      const scrollNow = () => {
+        if (done) return
+        done = true
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        history.replaceState(null, '', `#${id}`)
+      }
+
+      // Wait for the panel collapse transition to end (no hardcoded ms)
+      if (panel) {
+        const onEnd = (ev: TransitionEvent) => {
+          // only react to the panel's own max-height transition
+          if (ev.target !== panel) return
+          panel.removeEventListener('transitionend', onEnd)
+          scrollNow()
+        }
+        panel.addEventListener('transitionend', onEnd)
+
+        // Fallback in case transitionend doesn't fire (rare)
+        window.setTimeout(() => {
+          panel.removeEventListener('transitionend', onEnd)
+          scrollNow()
+        }, 350)
+      } else {
+        // Very safe fallback
+        window.setTimeout(scrollNow, 0)
+      }
+    }
   }
 
   return (
     <header className={styles.header}>
-      <a className={styles.skipLink} href="#main">
-        ข้ามไปเนื้อหาหลัก
-      </a>
-
       <div className={styles.containerHeader}>
         <a
           className={styles.brand}
           href="#top"
           aria-label="สวนแม่อารี - กลับไปด้านบน"
+          onClick={onNavClick('#top')}
         >
           <div className={styles.brandMark}>
             <Image
@@ -91,11 +141,20 @@ export default function SiteHeader() {
         {/* Desktop nav */}
         <nav className={styles.nav} aria-label="เมนูหลัก">
           {NAV.map((item) => (
-            <a key={item.href} className={styles.navLink} href={item.href}>
+            <a
+              key={item.href}
+              className={styles.navLink}
+              href={item.href}
+              onClick={onNavClick(item.href)}
+            >
               {item.label}
             </a>
           ))}
-          <a className={`${styles.navLink} ${styles.navCta}`} href="#contact">
+          <a
+            className={`${styles.navLink} ${styles.navCta}`}
+            href="#contact"
+            onClick={onNavClick('#contact')}
+          >
             สั่งซื้อ / ติดต่อ
           </a>
         </nav>
@@ -135,7 +194,7 @@ export default function SiteHeader() {
                 key={item.href}
                 className={styles.mobileLink}
                 href={item.href}
-                onClick={onNavClick}
+                onClick={onNavClick(item.href)}
               >
                 <span className={styles.mobileDot} aria-hidden="true" />
                 <span>{item.label}</span>
@@ -143,12 +202,16 @@ export default function SiteHeader() {
             ))}
           </div>
 
-          <a className={styles.mobileCta} href="#contact" onClick={onNavClick}>
+          <a
+            className={styles.mobileCta}
+            href="#contact"
+            onClick={onNavClick('#contact')}
+          >
             สั่งซื้อ / ติดต่อ
           </a>
 
           <div className={styles.mobileNote}>
-            ส่งในกรุงเทพฯ / ปริมณฑล • ผลไม้ตามฤดูกาล • สดจากสวน
+            • ส่งทั่วประเทศ • ผลไม้คุณภาพดี • วิตามินสูง • สดจากสวน •
           </div>
         </div>
       </div>

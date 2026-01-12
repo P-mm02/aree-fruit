@@ -121,14 +121,14 @@ export default function SeasonalShowcaseTH() {
 
   return (
     <section
-      id="seasonal"
+      id="products"
       className={styles_share.section}
-      aria-label="ผลไม้ตามฤดูกาล"
+      aria-label="ผลไม้วันนี้"
     >
       <div className={styles_share.container}>
         <div className={styles_share.sectionHeadRow}>
           <div>
-            <h2 className={styles_share.h2}>ผลไม้วันนี้ (ตามฤดูกาล)</h2>
+            <h2 className={styles_share.h2}>ผลไม้วันนี้</h2>
             <p className={styles_share.lead}>
               รายการอาจเปลี่ยนตามรอบเก็บเกี่ยว — ทักมาเพื่อเช็กของจริงได้ทันที
             </p>

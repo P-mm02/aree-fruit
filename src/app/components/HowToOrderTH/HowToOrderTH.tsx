@@ -19,7 +19,6 @@ const steps = [
 export default function HowToOrderTH() {
   return (
     <section
-      id="how"
       aria-label="วิธีสั่งซื้อ"
     >
       <div >

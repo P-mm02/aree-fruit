@@ -70,7 +70,7 @@
 
 .brandText { display: grid; gap: 2px; }
 .brandName {
-  font-size: clamp(1.3rem, 1.05rem + 1.2vw, 1.9rem);
+  font-size: 1.8rem;
   font-weight: 900;
   letter-spacing: 0.1rem;
   line-height: 1.05;
@@ -222,8 +222,9 @@
 
 .mobileTitle {
   font-weight: 900;
+  font-size: 1.6rem;
   letter-spacing: 0.2px;
-  color: var(--text);
+  color: rgb(201, 31, 57);
 }
 
 .mobileLinks {
@@ -240,6 +241,7 @@
   border: 1px solid var(--border-soft);
   background: rgba(16, 20, 14, 0.03);
   color: var(--text);
+  font-size: 1.2rem;
   transition: transform var(--t-fast), background var(--t-fast), border-color var(--t-fast);
 }
 
@@ -268,7 +270,8 @@
     radial-gradient(18px 18px at 18% 25%, rgba(34, 112, 76, 0.20), rgba(34, 112, 76, 0)),
     rgba(34, 112, 76, 0.10);
   color: var(--text);
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 1.4rem;
   box-shadow: var(--shadow-md);
   transition: transform var(--t-fast), box-shadow var(--t-fast);
 }

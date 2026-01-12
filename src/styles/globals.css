@@ -46,6 +46,8 @@
   --ok: rgba(34, 112, 76, 0.95);
   --warn: rgba(196, 124, 44, 0.95);
   --bad: rgba(200, 70, 90, 0.95);
+
+  --scroll-offset: 84px;
 }
 
 /* 📐 Root font-size for rem scaling */

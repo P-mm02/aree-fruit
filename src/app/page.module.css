@@ -5,7 +5,10 @@
 }
 
 /* Shared section spacing + headings */
-.section { padding: 2rem 0 0 0; }
+.section { 
+  padding: 2rem 0 0 0;
+  scroll-margin-top: var(--scroll-offset);
+}
 
 .sectionHead { display: grid; gap: 10px; margin-bottom: 16px; }
 
